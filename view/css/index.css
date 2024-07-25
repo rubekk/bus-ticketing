@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+
+  /* Info Section */
+  .info{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(88, 80, 80);
+    height: 50px;
+
+  }
+
+  .info a{
+    text-decoration: none;
+    color: black;
+    
+  }
+  .info li{
+    display: inline-block;
+    padding: 0.8rem 0;
+    align-items: center;
+    
+  }
+
+  .info ul{
+    padding: 0 0rem;
+  }
+
+  .left-info li:first-child {
+    border-right: 2px solid black;
+    padding: 0 0.5rem;
+    margin: 0px 1rem;
+    font-size: 20px;
+  }
+
+  .left-info li{
+    font-size: 18px;
+    /* padding: 0 0.3rem; */
+  }
+
+  .right-info ul{
+    padding: 0 1rem;
+  }
+
+  .right-info a{
+    padding: 0 0.3rem;
+    font-size: 15px;
+    font-weight: bold;
+
+  }
+    
+  
+  /* Nav Section */
+  
+  
+.cf {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:grey;
+    padding: 10px 20px;
+    color: white;
+}
+
+.branding {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.search input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    width: 200px;
+}
+
+.logPage button {
+    background-color: rgb(88, 80, 80);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.logPage button:hover {
+    color: black;
+    font-weight: 600;
+}
+
+
+
+
+
