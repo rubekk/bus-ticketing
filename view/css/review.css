@@ -1,0 +1,144 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+.reviews-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.reviews-title {
+    font-size: 2rem;
+    margin: 0;
+    color: #333;
+    position: relative;
+}
+
+.reviews-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: red;
+    margin: 10px auto 0;
+}
+
+.reviews-subtitle {
+    font-size: 1.5rem;
+    color: #777;
+    margin: 10px 0 40px;
+}
+
+.reviews-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.review-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    max-width: 300px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+    transition: transform 0.5s ease;
+}
+
+.review-header {
+    padding: 15px;
+    text-align: left;
+}
+
+.company-name {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #613915;
+    margin: 0;
+}
+
+.star-rating {
+    color: #007bff;
+}
+
+.star-rating .star {
+    font-size: 1rem;
+}
+
+.star-rating .star.empty {
+    color: #ccc;
+}
+
+.review-content {
+    padding: 15px;
+    border-top: 1px solid #eee;
+}
+
+.review-text {
+    font-size: 0.9rem;
+    color: #333;
+    margin: 0 0 15px;
+    position: relative;
+    padding-left: 20px;
+}
+
+.review-text::before {
+    content: '“';
+    font-size: 2rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #ccc;
+}
+
+.reviewer-info {
+    display: flex;
+    align-items: center;
+}
+
+.reviewer-photo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reviewer-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #ff4a4a;
+}
+
+.prev-btn, .next-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
