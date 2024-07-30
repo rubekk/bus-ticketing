@@ -1,0 +1,27 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.landing{
+  width: 100vw;
+  height: 500px;
+  background-color: #797979;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing img{
+  animation: busAnim 5s infinite;
+}
+
+@keyframes busAnim{
+  0%{
+    transform: scale(0.5);
+  }
+  100%{
+    transform: scale(1.15);
+  }
+}
