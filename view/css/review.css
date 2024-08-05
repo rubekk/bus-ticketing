@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -10,7 +11,6 @@ body {
     margin: 0 auto;
     padding: 20px;
     text-align: center;
-    position: relative;
 }
 
 .reviews-title {
@@ -20,14 +20,6 @@ body {
     position: relative;
 }
 
-.reviews-title::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 2px;
-    background-color: red;
-    margin: 10px auto 0;
-}
 
 .reviews-subtitle {
     font-size: 1.5rem;
@@ -35,28 +27,24 @@ body {
     margin: 10px 0 40px;
 }
 
+/* Responsive Container for Review Cards */
 .reviews-container {
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
 }
 
+/* Review Card Styles */
 .review-card {
-    background: #fff;
+    background-color: rgb(51 44 196 / 10%);
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-    max-width: 300px;
-    flex: 1;
+    padding: 15px;
     display: flex;
     flex-direction: column;
-    min-width: 300px;
-    transition: transform 0.5s ease;
 }
 
 .review-header {
-    padding: 15px;
     text-align: left;
 }
 
@@ -68,7 +56,7 @@ body {
 }
 
 .star-rating {
-    color: #007bff;
+    color: #fd5900;
 }
 
 .star-rating .star {
@@ -80,8 +68,8 @@ body {
 }
 
 .review-content {
-    padding: 15px;
     border-top: 1px solid #eee;
+    padding-top: 15px;
 }
 
 .review-text {
@@ -90,15 +78,6 @@ body {
     margin: 0 0 15px;
     position: relative;
     padding-left: 20px;
-}
-
-.review-text::before {
-    content: '“';
-    font-size: 2rem;
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #ccc;
 }
 
 .reviewer-info {
@@ -116,29 +95,24 @@ body {
 .reviewer-name {
     font-size: 0.9rem;
     font-weight: bold;
-    color: #ff4a4a;
+    
 }
 
-.prev-btn, .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
+/* Media Queries */
+@media (max-width: 992px) {
+    .reviews-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.prev-btn {
-    left: 10px;
-}
-
-.next-btn {
-    right: 10px;
-}
-
-.prev-btn:hover, .next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+@media (max-width: 600px) {
+    .reviews-container {
+        grid-template-columns: 1fr;
+    }
+    .reviews-title {
+        font-size: 1.5rem;
+    }
+    .reviews-subtitle {
+        font-size: 1.2rem;
+    }
 }

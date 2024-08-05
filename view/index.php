@@ -15,6 +15,7 @@
 
     <!-- Style -->
      <link rel="stylesheet" href="css/index.css">
+     <link rel="stylesheet" href="css/review.css">
      <link rel="stylesheet" href="css/footer.css">
 
 </head>
@@ -61,9 +62,135 @@
 </header>
         
 
+<!-- Reviews Section -->
+<section class="reviews-section">
+      <h2 class="reviews-title">REVIEWS</h2>
+      <h3 class="reviews-subtitle">What clients say</h3>
+      <div class="reviews-container" id="reviews-container">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">BIJAY BIJAY</span>
+            </div>
+            <div class="star-rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star empty">&#9733;</span>
+            </div>
+          </div>
+          <div class="review-content">
+            <div class="review-text">
+              Evergreen Service provider perfect service on reasonable price.
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <!-- <h4 class="company-name">Dhaulagiri Gandaki Yatayat Sewa Pvt. Ltd.</h4> -->
+            <div class="reviewer-info">
+              <span class="reviewer-name">ANISH SHRESTHA</span>
+            </div>
+            <div class="star-rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
+          </div>
+          <div class="review-content">
+            <div class="review-text">
+              Given extraordinary services on the digital platform.
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">ANISHA MALLA</span>
+            </div>
+            <div class="star-rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
+          </div>
+          <div class="review-content">
+            <div class="review-text">
+              Never had a complain while travelling got a nice staffs, they
+              stops on a nice place to have breakfast, lauch and dinner.
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">BHUMI RAJ</span>
+            </div>
+            <div class="star-rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star empty">&#9733;</span>
+            </div>
+          </div>
+          <div class="review-content">
+            <div class="review-text">
+              They are the evergreen service provider perfect service on a
+              reasonable price
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">BISHAL LAMA</span>
+            </div>
+            <div class="star-rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star empty">&#9733;</span>
+              <span class="star empty">&#9733;</span>
+            </div>
+          </div>
+          <div class="review-content">
+            <div class="review-text">
+              Need to upgrade their buses to new ones otherwise they are good.
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-info">
+              <span class="reviewer-name">RUBEK MAHARJAN</span>
+            </div>
+            <div class="star-rating">
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+              <span class="star">&#9733;</span>
+            </div>
+          </div>
+          <div class="review-content">
+            <div class="review-text">
+              Good Service. I had a comfortable journey.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
 
+<!-- Footer Section -->
 <footer class="footer">
 
 <section class="grid">
