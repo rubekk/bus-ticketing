@@ -1,0 +1,53 @@
+:root {
+    --primary-color: #2C3E50;
+    /* Dark Blue */
+    --secondary-color: #ECF0F1;
+    /* Light Gray */
+    --accent-color: #E74C3C;
+    /* Bright Red */
+    --text-color: #FFFFFF;
+    /* White */
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+  }
+  .header .title {
+    font-size: 24px;
+  }
+  .header .buttons {
+    display: flex;
+    gap: 10px;
+  }
+  .header .buttons span{
+    margin-top: .5rem;
+  }
+  .header .buttons button {
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  .header .buttons button:hover {
+    background-color: var(--primary-color);
+  }
