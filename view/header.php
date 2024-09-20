@@ -1,11 +1,12 @@
 <?php session_start(); ?>
 <!-- header section -->
 <header class="header">
-    <div class="title">Mahabus</div>
+    <div class="title" onclick="window.location.href='/bus-ticketing/view'">MahaBus</div>
 
     <?php if($_SESSION && $_SESSION['loggedin']==true) { ?>
         <div class="buttons">
-            <span><?php echo $_SESSION['username']; ?></span>
+            <span class="username">Hi, <?php echo $_SESSION['username']; ?>!</span>
+            <span class="booking-history-txt" onclick="window.location.href='./bookings.php'">Booking history</span>
             <button onclick="window.location.href='./../backend/logout.php'">Log out</button>
         </div>
     <?php } else { ?>

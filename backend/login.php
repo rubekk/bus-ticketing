@@ -15,7 +15,7 @@
             if(mysqli_num_rows($result) == 1) {
                 $row=$result->fetch_assoc();
                 $_SESSION['loggedin'] = true;
-                $_SESSION['username'] = $row['uname'];
+                $_SESSION['username'] = explode(" ",$row['uname'])[0];
                 $_SESSION['id'] = $row['id'];
 
                 header("Location: ./../view/index.php");

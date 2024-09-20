@@ -36,7 +36,7 @@
         //     uid INT,
         //     bookingtime DATETIME DEFAULT CURRENT_TIMESTAMP,
         //     FOREIGN KEY (bid) REFERENCES buses(bid),
-        //     FOREIGN KEY (sid) REFERENCES Seats(sid)
+        //     FOREIGN KEY (sid) REFERENCES seats(sid)
         // )";
         
         mysqli_query($connection, $sql);

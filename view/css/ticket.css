@@ -1,60 +1,35 @@
-.ticket-listing{
-    margin: 3rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.ticket {
-    background-color: var(--text-color);
+.bus-info {
+    margin: 2rem auto 0;
+    width: 600px;
+    text-align: center;
+    background-color: #2C3E50;
+    color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 600px;
-    border-left: 5px solid var(--accent-color);
 }
-.ticket-upper, .ticket-lower{
+.bus-info h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+.bus-info p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+.seat-container-outer {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
 }
-.ticket-upper p{
-    color: var(--accent-color);
-}
-.ticket-lower{
-    margin: 1rem 0 0;
-}
-.ticket-lower i{
-    margin-left: .25rem;
-}
-.has-ac{
-    margin-left: .5rem;
-}
-.ticket-price {
-    background-color: #E0E0E0;
-    padding: 10px 15px;
-    border-radius: 5px;
-    color: var(--accent-color);
-}
-.fa-ticket{
-    color: #000;
-}
-.view-seats-btn {
-    margin: 1rem 0;
-    background-color: #E0E0E0;
-    padding: 10px 15px;
-    border-radius: 5px;
-    border: 1px solid #2d2d2d;
-    cursor: pointer;
-}
-
-/* bus seats */
-.bus-container {
+.seat-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1rem 0 0;
-    width: 220px; 
+    margin: 1rem 0;
+    width: 300px;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .row {
     display: flex;
@@ -76,10 +51,43 @@
     text-align: center;
     line-height: 40px;
     border-radius: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.seat:hover {
+    background-color: var(--accent-color);
 }
 .gap {
     width: 40px;
 }
-.hide{
+.hide {
     display: none;
 }
+.row .booked, .last-row .booked {
+    background-color: #797979;
+}
+.newbook {
+    background-color: var(--accent-color);
+}
+
+.book-ticket{
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.book-btn{
+    margin: auto;
+    padding: 10px 15px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+  }
+  .book-btn:hover {
+    background-color: var(--primary-color);
+  }
+  .book-ticket b{
+    margin-right: .25rem;
+  }

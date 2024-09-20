@@ -1,63 +1,101 @@
+<?php 
+        include "./header.php"; 
+        include "./../backend/connection.php";
+        include "./../backend/getbus.php";
+        include "./../backend/getseat.php";
+
+        if(isset($_GET['bid'])){
+            $bid = $_GET['bid'];
+            $bus = getBusById($connection, $bid); 
+
+            $bname= $bus[0]['bname'];
+            $ticketPrice= $bus[0]['ticketprice'];
+            $sourceAddress= $bus[0]['source'];
+            $destinationAddress= $bus[0]['destination'];
+            $hasWifi= $bus[0]['haswifi'];
+            $hasAc= $bus[0]['hasac'];
+        } 
+        else {
+            echo "Bus ID not provided.";
+            exit;
+        }
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bus Ticket Booking - Mahabus</title>
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@0;1&display=swap" rel="stylesheet">
-    <!-- css links -->
+    <title>Bus Seats - <?php echo $bus[0]['bname']; ?></title>
     <link rel="stylesheet" href="./css/common.css">
     <link rel="stylesheet" href="./css/ticket.css">
 </head>
-<body>
-    <?php include "./header.php"; ?>
+<body>   
+    <?php
+        if($_SESSION && $_SESSION['loggedin']==true) { 
+            echo '<div class="user-session-id hide" data-id="'. $_SESSION['id'] .'"></div>';
+        }
+        else{
+            echo '<div class="user-session-id hide" data-id="empty"></div>';   
+        }
+    ?>
+    <div class="bus-info">
+        <h2>Bus Name: <?php echo $bname; ?></h2>
+        <p>Ticket Price: Rs <?php echo $ticketPrice; ?></p>
+        <p>Source: <?php echo $sourceAddress; ?> | Destination: <?php echo $destinationAddress; ?></p>
+        <p>Wifi: <?php echo $hasWifi ? 'Available' : 'Not Available'; ?></p>
+        <p>AC: <?php echo $hasAc ? 'Available' : 'Not Available'; ?></p>
+    </div>
 
-     <!-- listing ticket section -->
-     <div class="ticket-listing">
-        <?php
-            include "./../backend/connection.php";
-            include "./../backend/getbus.php";
-
-            if(isset($_GET['sourceAddress']) && isset($_GET['destinationAddress'])){
-                $data=getBusData($connection, $_GET['sourceAddress'], $_GET['destinationAddress']);
-            }
-
-            if(gettype($data)=='array' && count($data)){  
-                for($i=0; $i<count($data); $i++){
-                    $bid=$data[$i]['bid'];
-                    $bname=$data[$i]['bname'];
-                    $ticketPrice=$data[$i]['ticketprice'];
-                    $sourceAddress=$data[$i]['source'];
-                    $destinationAddress=$data[$i]['destination'];
-                    $hasWifi=$data[$i]['haswifi'];
-                    $hasAc=$data[$i]['hasac'];
-
-                    echo '<div class="ticket">
-                        <div class="ticket-upper">
-                            <h2>'. $sourceAddress .'</h2>
-                            <p><span class="ticket-price"><i class="fa fa-ticket"></i> Rs '. $ticketPrice .'</span></p>
-                            <h2>'. $destinationAddress .'</h2>
-                        </div>
-                        <div class="ticket-lower">
-                            <div class="bus-name">'. $bname .'</div>
-                            <div>
-                                <span class="has-wifi">Wifi'. ($hasWifi ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-times"></i>') .'</span>
-                                <span class="has-ac">AC'. ($hasAc ? '<i class="fa-solid fa-check"></i>' : '<i class="fa-solid fa-times"></i>') .'</span>
-                            </div>
-                        </div>
-                        <button class="view-seats-btn">View Seats</button>
-                        <hr>
-                        <div class="bus-container hide"></div>
-                    </div>';
-                }
-            }
-            else echo "Sorry, no tickets found!";
+    <div class="seat-container-outer">
+        <?php 
+            echo '<div class="seat-container" data-id="'. $bid .'">
+                <div class="row">
+                    '. (getSeatStatus($connection, $bid, 'A1') == 0 ? '<div class="seat">A1</div>' : '<div class="seat booked">A1</div>') . 
+                    (getSeatStatus($connection, $bid, 'A2') == 0 ? '<div class="seat">A2</div>' : '<div class="seat booked">A2</div>') .'
+                    <div class="gap"></div>
+                    '. (getSeatStatus($connection, $bid, 'B1') == 0 ? '<div class="seat">B1</div>' : '<div class="seat booked">B1</div>') . 
+                    (getSeatStatus($connection, $bid, 'B2') == 0 ? '<div class="seat">B2</div>' : '<div class="seat booked">B2</div>') .'
+                </div>
+                <div class="row">
+                    '. (getSeatStatus($connection, $bid, 'A3') == 0 ? '<div class="seat">A3</div>' : '<div class="seat booked">A3</div>') . 
+                    (getSeatStatus($connection, $bid, 'A4') == 0 ? '<div class="seat">A4</div>' : '<div class="seat booked">A4</div>') .'
+                    <div class="gap"></div>
+                    '. (getSeatStatus($connection, $bid, 'B3') == 0 ? '<div class="seat">B3</div>' : '<div class="seat booked">B3</div>') . 
+                    (getSeatStatus($connection, $bid, 'B4') == 0 ? '<div class="seat">B4</div>' : '<div class="seat booked">B4</div>') .'
+                </div>
+                <div class="row">
+                    '. (getSeatStatus($connection, $bid, 'A5') == 0 ? '<div class="seat">A5</div>' : '<div class="seat booked">A5</div>') . 
+                    (getSeatStatus($connection, $bid, 'A6') == 0 ? '<div class="seat">A6</div>' : '<div class="seat booked">A6</div>') .'
+                    <div class="gap"></div>
+                    '. (getSeatStatus($connection, $bid, 'B5') == 0 ? '<div class="seat">B5</div>' : '<div class="seat booked">B5</div>') . 
+                    (getSeatStatus($connection, $bid, 'B6') == 0 ? '<div class="seat">B6</div>' : '<div class="seat booked">B6</div>') .'
+                </div>
+                <div class="row">
+                    '. (getSeatStatus($connection, $bid, 'A7') == 0 ? '<div class="seat">A7</div>' : '<div class="seat booked">A7</div>') . 
+                    (getSeatStatus($connection, $bid, 'A8') == 0 ? '<div class="seat">A8</div>' : '<div class="seat booked">A8</div>') .'
+                    <div class="gap"></div>
+                    '. (getSeatStatus($connection, $bid, 'B7') == 0 ? '<div class="seat">B7</div>' : '<div class="seat booked">B7</div>') . 
+                    (getSeatStatus($connection, $bid, 'B8') == 0 ? '<div class="seat">B8</div>' : '<div class="seat booked">B8</div>') .'
+                </div>
+                <div class="last-row">
+                    '. (getSeatStatus($connection, $bid, 'A9') == 0 ? '<div class="seat">A9</div>' : '<div class="seat booked">A9</div>') . 
+                    (getSeatStatus($connection, $bid, 'A10') == 0 ? '<div class="seat">A10</div>' : '<div class="seat booked">A10</div>') .
+                    (getSeatStatus($connection, $bid, 'A11') == 0 ? '<div class="seat">A11</div>' : '<div class="seat booked">A11</div>') .
+                    (getSeatStatus($connection, $bid, 'B9') == 0 ? '<div class="seat">B9</div>' : '<div class="seat booked">B9</div>') .
+                    (getSeatStatus($connection, $bid, 'B10') == 0 ? '<div class="seat">B10</div>' : '<div class="seat booked">B10</div>') .'
+                </div>
+            </div>';
         ?>
+    </div>
+
+    <div class="book-ticket">
+        <?php 
+            echo ($_SESSION && $_SESSION['loggedin']==true) ? 
+            "<div class='book-txt'>Select a seat to book</div>
+            <button class='book-btn'>Book</button>" :
+            "<b>Login </b> to book the ticket"; 
+         ?>
     </div>
 
     <script src="./js/ticket.js"></script>

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MahaBus</title>
+  <link rel="icon" type="image/x-icon" href="./imgs/bus.png">
   <!-- animate -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -25,7 +26,7 @@
       <h1>"महाबस: तपाईंको यात्रा अनुभवलाई सरल र सुरक्षित बनाउँदै।"</h1>
     </div>
     <div class="form-container">
-      <form action="./ticket.php" method="GET">
+      <form action="./buses.php" method="GET">
         <input type="text" placeholder="Pickup Destination" name="sourceAddress" required>
         <input type="text" placeholder="To Destination" name="destinationAddress" required>
         <input type="date" placeholder="Date of Pickup">
@@ -48,23 +49,23 @@
 
   <section class="city-buses-section">
     <h2>Popular Bus Routes</h2>
-    <div class="city-bus-box">
+    <div class="city-bus-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Biratnagar'">
         <img src="./imgs/ktm-bir.jpg" alt="City 1">
         <div class="city-text">Kathmandu to Biratnagar</div>
     </div>
-    <div class="city-bus-box">
+    <div class="city-bus-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Pokhara'">
         <img src="./imgs/ktm-pkr.jpg" alt="City 2">
         <div class="city-text">Kathmandu to Pokhara</div>
     </div>
-    <div class="city-bus-box">
+    <div class="city-bus-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Janakpur'">
         <img src="./imgs/ktm-jan.jpg" alt="City 1">
         <div class="city-text">Kathmandu to Janakpur</div>
     </div>
-    <div class="city-bus-box">
+    <div class="city-bus-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Nepalgunj'">
         <img src="./imgs/ktm-nep.jpg" alt="City 2">
         <div class="city-text">Kathmandu to Nepalgunj</div>
     </div>
-    <div class="city-bus-box">
+    <div class="city-bus-box" onclick="window.location.href='./buses.php?sourceAddress=Pokhara&destinationAddress=Kathmandu'">
         <img src="./imgs/pkr-ktm.webp" alt="City 1">
         <div class="city-text">Pokhara to Kathmandu</div>
     </div>
@@ -72,13 +73,13 @@
 
   <section class="other-routes-section"  data-aos="zoom-in-up" data-aos-anchor-placement="bottom-bottom" data-aos-duration="1500">
     <h2>Other Routes</h2>
-    <div class="route-box">Kathmandu to Jhapa</div>
-    <div class="route-box">Kathmandu to Mahottari</div>
-    <div class="route-box">Kathmandu to Chitwan</div>
-    <div class="route-box">Kathmandu to Ilam</div>
-    <div class="route-box">Kathmandu to Dolakha</div>
-    <div class="route-box">Kathmandu to Okhaldhunga</div>
-    <div class="route-box">Kathmandu to Butwal</div>
+    <div class="route-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Jhapa'">Kathmandu to Jhapa</div>
+    <div class="route-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Mahottari'">Kathmandu to Mahottari</div>
+    <div class="route-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Chitwan'">Kathmandu to Chitwan</div>
+    <div class="route-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Ilam'">Kathmandu to Ilam</div>
+    <div class="route-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Dolakha'">Kathmandu to Dolakha</div>
+    <div class="route-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Okhaldhunga'">Kathmandu to Okhaldhunga</div>
+    <div class="route-box" onclick="window.location.href='./buses.php?sourceAddress=Kathmandu&destinationAddress=Butwal'">Kathmandu to Butwal</div>
   </section>
 
   <footer>

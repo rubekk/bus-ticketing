@@ -7,6 +7,14 @@ function getBusData($conn, $sourceAddress, $destinationAddress) {
     return execSql($conn, $sql);
 }
 
+function getBusById($conn, $bid) {
+    $sql = "SELECT bid, bname, price, haswifi, hasac, source, destination 
+            FROM buses 
+            WHERE bid='$bid'";
+    
+    return execSql($conn, $sql);
+}
+
 function execSql($conn, $sql) {
     try {
         $result = mysqli_query($conn, $sql);

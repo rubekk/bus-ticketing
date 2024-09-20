@@ -20,6 +20,10 @@ body {
     margin: 0;
     padding: 0;
 }
+a{
+  text-decoration: none;
+  color: var(--primary-color)
+}
 
 /* header */
 .header {
@@ -37,6 +41,14 @@ body {
     display: flex;
     gap: 10px;
   }
+  .booking-history-txt{
+    margin: 0 1rem;
+    cursor: pointer;
+    transition: .3s;
+  }
+  .booking-history-txt:hover{
+    color: #797979;
+  }
   .header .buttons span{
     margin-top: .5rem;
   }
@@ -47,6 +59,7 @@ body {
     border: none;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
+    transition: .3s;
   }
   .header .buttons button:hover {
     background-color: var(--primary-color);

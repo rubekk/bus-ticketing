@@ -1,49 +1,73 @@
-const viewSeatsBtns= document.querySelectorAll(".view-seats-btn");
-const busContainers= document.querySelectorAll(".bus-container");
+const seats= document.querySelectorAll(".seat");
+const bookTxt= document.querySelector(".book-txt");
+const bookBtn= document.querySelector(".book-btn");
+const userId= document.querySelector(".user-session-id").getAttribute('data-id');
+const busId= seats[0].parentElement.parentElement.getAttribute("data-id");
 
-busContainers.forEach(elem =>{
-    elem.innerHTML= `
-    <div class="row">
-        <div class="seat">A1</div>
-        <div class="seat">A2</div>
-        <div class="gap"></div>
-        <div class="seat">B1</div>
-        <div class="seat">B2</div>
-    </div>
-    <div class="row">
-        <div class="seat">A3</div>
-        <div class="seat">A4</div>
-        <div class="gap"></div>
-        <div class="seat">B3</div>
-        <div class="seat">B4</div>
-    </div>
-    <div class="row">
-        <div class="seat">A5</div>
-        <div class="seat">A6</div>
-        <div class="gap"></div>
-        <div class="seat">B5</div>
-        <div class="seat">B6</div>
-    </div>
-    <div class="row">
-        <div class="seat">A7</div>
-        <div class="seat">A8</div>
-        <div class="gap"></div>
-        <div class="seat">B7</div>
-        <div class="seat">B8</div>
-    </div>
-    <div class="last-row">
-        <div class="seat">A9</div>
-        <div class="seat">A10</div>
-        <div class="seat">A11</div>
-        <div class="seat">B9</div>
-        <div class="seat">B10</div>
-    </div>
-    `;
-})
+let seatData= [];
+let data= {};
 
-viewSeatsBtns.forEach((elem,i) =>{
-    elem.addEventListener("click", ()=>{
-        if(busContainers[i].className== "bus-container hide") busContainers[i].className= "bus-container";
-        else busContainers[i].className= "bus-container hide";
+seats.forEach(seat=> {
+    seat.addEventListener("click", ()=>{
+        if(seat.className == "seat booked") return;
+        else if(seat.className == "seat") {
+            seat.className= "seat newbook";
+
+            seatData.push(seat.innerText);
+        }
+        else if(seat.className == "seat newbook") {
+            seat.className="seat";
+
+            seatData.splice(seatData.indexOf(seat.innerText), 1);
+        }
+
+        handleBookElems();
+        data = {
+            seats: seatData,
+            uid: userId,
+            bid: busId
+        };
     })
 })
+
+const handleBookElems= ()=>{
+    if(seatData.length == 0) {
+        bookTxt.style.display= "block";
+        bookBtn.style.display= "none";
+    }
+    else{
+        bookTxt.style.display= "none";
+        bookBtn.style.display= "block";
+    }
+}
+handleBookElems();
+
+const postToPHP = data => {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = './../backend/postseat.php';
+
+    data.seats.forEach((seat, index) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = `seats[]`;  
+        input.value = seat;
+        form.appendChild(input);
+    });
+
+    for (const key in data) {
+        if (data.hasOwnProperty(key) && key !== 'seats') {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key;
+            input.value = data[key];
+            form.appendChild(input);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();  
+};
+
+
+bookBtn.addEventListener("click", ()=> postToPHP(data));
