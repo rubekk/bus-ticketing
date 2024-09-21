@@ -69,7 +69,13 @@
 .newbook {
     background-color: var(--accent-color);
 }
-
+.pickup-info{
+    margin: .5rem auto 1rem;
+    padding: 1rem;
+    width: 400px;
+    text-align: justify;
+    background-color: #fff;
+}
 .book-ticket{
     margin: 1rem 0;
     display: flex;
@@ -84,10 +90,10 @@
     border: none;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
-  }
-  .book-btn:hover {
+}
+.book-btn:hover {
     background-color: var(--primary-color);
-  }
-  .book-ticket b{
+}
+.book-ticket b{
     margin-right: .25rem;
-  }
+}

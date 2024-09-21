@@ -7,8 +7,11 @@
         //     uname VARCHAR(25) NOT NULL,
         //     email VARCHAR(50) NOT NULL,
         //     phone VARCHAR(12) NOT NULL,
-        //     pw VARCHAR(50) NOT NULL
+        //     pw VARCHAR(50) NOT NULL,
+        //     ulocation VARCHAR(250) 
         // )";
+
+        // $sql="ALTER TABLE users ADD ulocation VARCHAR(250)";
         
         // $sql="CREATE table buses(
         //     bid INT PRIMARY KEY AUTO_INCREMENT,
@@ -17,8 +20,11 @@
         //     haswifi BOOLEAN NOT NULL,
         //     hasac BOOLEAN NOT NULL,
         //     source VARCHAR(50) NOT NULL,
-        //     destination VARCHAR(50) NOT NULL
+        //     destination VARCHAR(50) NOT NULL,
+        //     pickup_locations VARCHAR(500)
         // )";
+
+        // $sql="ALTER TABLE buses ADD pickup_locations VARCHAR(500)";
 
         // $sql="CREATE TABLE seats (
         //     sid INT PRIMARY KEY AUTO_INCREMENT,

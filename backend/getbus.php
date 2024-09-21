@@ -1,6 +1,6 @@
 <?php
 function getBusData($conn, $sourceAddress, $destinationAddress) {
-    $sql = "SELECT bid, bname, price, haswifi, hasac, source, destination 
+    $sql = "SELECT bid, bname, price, haswifi, hasac, source, destination, pickuplocations 
             FROM buses 
             WHERE source='$sourceAddress' AND destination='$destinationAddress'";
     
@@ -8,7 +8,7 @@ function getBusData($conn, $sourceAddress, $destinationAddress) {
 }
 
 function getBusById($conn, $bid) {
-    $sql = "SELECT bid, bname, price, haswifi, hasac, source, destination 
+    $sql = "SELECT bid, bname, price, haswifi, hasac, source, destination, pickuplocations 
             FROM buses 
             WHERE bid='$bid'";
     
@@ -30,7 +30,8 @@ function execSql($conn, $sql) {
                     'haswifi' => $row["haswifi"],
                     'hasac' => $row["hasac"],
                     'source' => $row["source"],
-                    'destination' => $row["destination"]
+                    'destination' => $row["destination"],
+                    'pickuplocations' => $row["pickuplocations"]
                 );
                 $i++;
             }

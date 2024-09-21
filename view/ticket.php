@@ -3,6 +3,7 @@
         include "./../backend/connection.php";
         include "./../backend/getbus.php";
         include "./../backend/getseat.php";
+        include "./utils/distance.php";
 
         if(isset($_GET['bid'])){
             $bid = $_GET['bid'];
@@ -14,6 +15,24 @@
             $destinationAddress= $bus[0]['destination'];
             $hasWifi= $bus[0]['haswifi'];
             $hasAc= $bus[0]['hasac'];
+            $pickupLocations= $bus[0]['pickuplocations'];
+
+            $coordinates = [];
+            $pickupLocation = "empty";
+            
+            if($_SESSION && $_SESSION['loggedin']==true && $_SESSION['ulocation']!="empty"){
+                $locationsArray = explode('xxx', $pickupLocations);
+
+                foreach ($locationsArray as $location) {
+                    $latLng = explode('zzz', $location);
+                    if (count($latLng) === 2) {
+                        array_push($coordinates, [(float)$latLng[0], (float)$latLng[1]]);
+                    }
+                }
+
+                $ulocation = explode("zzz", $_SESSION['ulocation']);
+                $pickupLocation = bestPickup($ulocation, $coordinates);
+            }
         } 
         else {
             echo "Bus ID not provided.";
@@ -86,6 +105,17 @@
                     (getSeatStatus($connection, $bid, 'B10') == 0 ? '<div class="seat">B10</div>' : '<div class="seat booked">B10</div>') .'
                 </div>
             </div>';
+        ?>
+    </div>
+
+    <div class="pickup-info">
+        <?php
+            if($pickupLocation != "empty"){
+                echo "Suggested pickup location for you is " . $pickupLocation;
+            }
+            else {
+                echo "Add your location to get the best pickup location";
+            }
         ?>
     </div>
 

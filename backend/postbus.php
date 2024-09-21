@@ -6,6 +6,7 @@ if ($_POST) {
     $hasAC = isset($_POST['hasAC']) ? 1 : 0;
     $sourceAddress = $_POST['sourceAddress'];
     $destinationAddress = $_POST['destinationAddress'];
+    $pickupLocations = $_POST['pickupLocations'];
 
     include "connection.php";
 
@@ -14,9 +15,9 @@ if ($_POST) {
         $result = mysqli_query($connection, $sql);
 
         if (!mysqli_num_rows($result) > 0) {
-            $sql = "INSERT INTO buses (bname, price, haswifi, hasac, source, destination) 
-                    VALUES ('$busName', '$ticketPrice', '$hasWifi', '$hasAC', '$sourceAddress', '$destinationAddress')";
-            mysqli_query($connection, $sql);
+            $sql = "INSERT INTO buses (bname, price, haswifi, hasac, source, destination, pickuplocations) 
+                    VALUES ('$busName', '$ticketPrice', '$hasWifi', '$hasAC', '$sourceAddress', '$destinationAddress', '$pickupLocations')";
+            mysqli_query($connection, $sql);        
 
             $bid = mysqli_insert_id($connection);
             $sql = "INSERT INTO seats (bid, seatno)
@@ -24,7 +25,7 @@ if ($_POST) {
             mysqli_query($connection, $sql);
 
             echo "Bus registration successful";
-            header("Location: ./../admin/   ");
+            header("Location: ./../admin/");
         } else {
             echo "Bus with the same name, source, and destination already exists";
         }

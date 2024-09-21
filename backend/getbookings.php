@@ -11,8 +11,6 @@
             die("Query failed: " . mysqli_error($connection));
         }
 
-        $bookings = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-        return $bookings;
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);;
     }
 ?>

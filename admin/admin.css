@@ -24,6 +24,9 @@ body {
     color: var(--primary-color);
     font-size: 28px;
 }
+.logout-btn{
+    margin-bottom: 1rem;
+}
 .form-container {
     background-color: var(--card-background);
     padding: 20px;
@@ -83,4 +86,11 @@ button {
 }
 button:hover {
     background-color: darken(var(--accent-color), 10%);
+}
+#map {
+    height: 400px;
+    margin-top: 20px;
+}
+#pickupList {
+    margin-top: 15px;
 }

@@ -9,16 +9,24 @@
         include "connection.php";
 
         if($connection){  
-            $sql="SELECT uname, id FROM users WHERE email='$formEmail' AND pw='$encryptedPw'";
+            $sql="SELECT uname, id, ulocation FROM users WHERE email='$formEmail' AND pw='$encryptedPw'";
             $result=mysqli_query($connection, $sql);
 
             if(mysqli_num_rows($result) == 1) {
-                $row=$result->fetch_assoc();
-                $_SESSION['loggedin'] = true;
-                $_SESSION['username'] = explode(" ",$row['uname'])[0];
-                $_SESSION['id'] = $row['id'];
+                if($formEmail == "admin@mahabus.com"){
+                    $_SESSION['admin'] = true;
 
-                header("Location: ./../view/index.php");
+                    header("Location: ./../admin/index.php");
+                }
+                else{
+                    $row=$result->fetch_assoc();
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['username'] = explode(" ",$row['uname'])[0];
+                    $_SESSION['id'] = $row['id'];
+                    $_SESSION['ulocation'] = $row['ulocation'] ? $row['ulocation'] : "empty";
+                    
+                    header("Location: ./../view/index.php");
+                }
             }
             else {
                 echo("Cannot log in");
