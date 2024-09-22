@@ -33,7 +33,7 @@
                 <button type="submit">Log in</button>
             </form>
             <div class="register">
-                <a href="./signup.html">Create an account</a>
+                <a href="./signup.php">Create an account</a>
             </div>
         </div>
     </div>

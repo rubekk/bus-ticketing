@@ -31,9 +31,19 @@
             include "./../backend/connection.php";
             include "./../backend/getbus.php";
             include "./../backend/getseat.php";
+            include "./../backend/getbookings.php";
+            include "./utils/contentbased.php";
 
             if(isset($_GET['sourceAddress']) && isset($_GET['destinationAddress'])){
-                $data=getBusData($connection, $_GET['sourceAddress'], $_GET['destinationAddress']);
+                if($_SESSION['loggedin']) {
+                    $buses= getBusData($connection, $_GET['sourceAddress'], $_GET['destinationAddress']);
+                    $bookings= getUserBookings($connection, $_SESSION['id']);
+
+                    $data= contentBased($buses, $bookings);
+                }
+                else {
+                    $data= getBusData($connection, $_GET['sourceAddress'], $_GET['destinationAddress']);
+                }
             }
 
             if(gettype($data)=='array' && count($data)){  

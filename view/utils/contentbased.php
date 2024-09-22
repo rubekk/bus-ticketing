@@ -1,7 +1,6 @@
 <?php
-include "./../backend/connection.php";
-include "./../backend/getBus.php";
-include "./../backend/getbookings.php";
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 function analyzeUserPreferences($bookings) {
     $totalPrice = 0;
@@ -32,8 +31,8 @@ function analyzeUserPreferences($bookings) {
 
 function sortBusesByUserPreferences($buses, $preferences) {
     usort($buses, function($a, $b) use ($preferences) {
-        $priceDiffA = abs($preferences['averagePrice'] - $a['price']);
-        $priceDiffB = abs($preferences['averagePrice'] - $b['price']);
+        $priceDiffA = abs($preferences['averagePrice'] - $a['ticketprice']);
+        $priceDiffB = abs($preferences['averagePrice'] - $b['ticketprice']);
 
         if ($priceDiffA != $priceDiffB) {
             return $priceDiffA <=> $priceDiffB; 
@@ -51,16 +50,10 @@ function sortBusesByUserPreferences($buses, $preferences) {
     return $buses;
 }
 
-$uid = 1; 
-$bookings = getUserBookings($connection, $uid);
-$sourceAddress = 'Kathmandu'; 
-$destinationAddress = 'Jhapa'; 
+function contentBased($buses, $bookings){
+    $preferences = analyzeUserPreferences($bookings);
+    $sortedBuses = sortBusesByUserPreferences($buses, $preferences);
 
-$buses = getBusData($connection, $sourceAddress, $destinationAddress);
-$preferences = analyzeUserPreferences($bookings);
-$sortedBuses = sortBusesByUserPreferences($buses, $preferences);
-
-foreach ($sortedBuses as $bus) {
-    echo "Bus Name: " . $bus['bname'] . ", Price: " . $bus['price'] . ", Wi-Fi: " . ($bus['haswifi'] ? 'Yes' : 'No') . ", AC: " . ($bus['hasac'] ? 'Yes' : 'No') . "<br>";
+    return $sortedBuses;
 }
 ?>

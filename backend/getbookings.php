@@ -11,6 +11,6 @@
             die("Query failed: " . mysqli_error($connection));
         }
 
-        return mysqli_fetch_all($result, MYSQLI_ASSOC);;
+        return mysqli_fetch_all($result, MYSQLI_ASSOC);
     }
 ?>
